@@ -77,13 +77,10 @@ describe("Intermission", function() {
     //   * GET parameters are optional
     //   * any missing value will be "" (instead of null)
 
-    var fixThisPattern = /^(http|https|ftp|sftp|ssh)(:)/////;
+    var fixThisPattern =
+    /^(http|https|ftp|sftp|ssh):\/\/((((\d{1,3}\.){3}\d{1,3}))(:[\d]{4})?|((www\.)?\w+(\.[\w]{2,3})?))\/?((\w+\/)*)?([\w]+(\.[\w]{3})?)?(\?[\w]+\=[\w]+(\+[\w]+)*)?/;
+    //what a monstaa
 
-    var protocolGroup  = (http|https|ftp|sftp|ssh);
-    var serverGroup    = (((\d{1,3}\.){3}\d{1,3})|(;
-    var portGroup      = ___;
-    var directoryGroup = ___;
-    var fileGroup      = ___;
     var getParamsGroup = ___;
 
     // valid
@@ -98,42 +95,48 @@ describe("Intermission", function() {
     var matches7 = fixThisPattern.exec( 'gopher://oldserver.arpanet/' );
 
     // Debug:
-    // jasmine.log("Debug: " + matches1);
+    jasmine.log("Debug: " + matches1);
+    jasmine.log("Debug: " + matches2);
+    jasmine.log("Debug: " + matches3);
+    jasmine.log("Debug: " + matches4);
+    jasmine.log("Debug: " + matches5);
+    jasmine.log("Debug: " + matches6);
+    jasmine.log("Debug: " + matches7);
 
-    var protocol1   = matches1.length > protocolGroup  ? matches1[protocolGroup]  : "";
-    var server1     = matches1.length > serverGroup    ? matches1[serverGroup]    : "";
-    var port1       = matches1.length > portGroup      ? matches1[portGroup]      : "";
-    var directory1  = matches1.length > directoryGroup ? matches1[directoryGroup] : "";
-    var file1       = matches1.length > fileGroup      ? matches1[fileGroup]      : "";
-    var getParams1  = matches1.length > getParamsGroup ? matches1[getParamsGroup] : "";
+    var protocol1   = matches1.length > 1     ? matches1[1]         : "";
+    var server1     = matches1.length > 1     ? matches1[2]         : "";
+    var port1       = matches1.length > 100   ? matches1[6]         : "";
+    var directory1  = matches1.length > 100   ? matches1[10]        : "";
+    var file1       = matches1.length > 100   ? matches1[12]        : "";
+    var getParams1  = matches1.length > 100   ? matches1[14]        : "";
 
-    var protocol2   = matches2.length > protocolGroup  ? matches2[protocolGroup]  : "";
-    var server2     = matches2.length > serverGroup    ? matches2[serverGroup]    : "";
-    var port2       = matches2.length > portGroup      ? matches2[portGroup]      : "";
-    var directory2  = matches2.length > directoryGroup ? matches2[directoryGroup] : "";
-    var file2       = matches2.length > fileGroup      ? matches2[fileGroup]      : "";
-    var getParams2  = matches2.length > getParamsGroup ? matches2[getParamsGroup] : "";
+    var protocol2   = matches2.length > 1     ? matches2[1]         : "";
+    var server2     = matches2.length > 1     ? matches2[2]         : "";
+    var port2       = matches2.length > 100   ? matches2[6]         : "";
+    var directory2  = matches2.length > 100   ? matches2[10]        : "";
+    var file2       = matches2.length > 1     ? matches2[12]        : "";
+    var getParams2  = matches2.length > 1     ? matches2[14]        : "";
 
-    var protocol3   = matches3.length > protocolGroup  ? matches3[protocolGroup]  : "";
-    var server3     = matches3.length > serverGroup    ? matches3[serverGroup]    : "";
-    var port3       = matches3.length > portGroup      ? matches3[portGroup]      : "";
-    var directory3  = matches3.length > directoryGroup ? matches3[directoryGroup] : "";
-    var file3       = matches3.length > fileGroup      ? matches3[fileGroup]      : "";
-    var getParams3  = matches3.length > getParamsGroup ? matches3[getParamsGroup] : "";
+    var protocol3   = matches3.length > 1     ? matches3[1]         : "";
+    var server3     = matches3.length > 1     ? matches3[2]         : "";
+    var port3       = matches3.length > 100   ? matches3[6]         : "";
+    var directory3  = matches3.length > 1     ? matches3[10]        : "";
+    var file3       = matches3.length > 100   ? matches3[12]        : "";
+    var getParams3  = matches3.length > 100   ? matches3[14]        : "";
 
-    var protocol4   = matches4.length > protocolGroup  ? matches4[protocolGroup]  : "";
-    var server4     = matches4.length > serverGroup    ? matches4[serverGroup]    : "";
-    var port4       = matches4.length > portGroup      ? matches4[portGroup]      : "";
-    var directory4  = matches4.length > directoryGroup ? matches4[directoryGroup] : "";
-    var file4       = matches4.length > fileGroup      ? matches4[fileGroup]      : "";
-    var getParams4  = matches4.length > getParamsGroup ? matches4[getParamsGroup] : "";
+    var protocol4   = matches4.length > 1     ? matches4[1]         : "";
+    var server4     = matches4.length > 1     ? matches4[2]         : "";
+    var port4       = matches4.length > 100   ? matches4[6]         : "";
+    var directory4  = matches4.length > 1     ? matches4[10]        : "";
+    var file4       = matches4.length > 1     ? matches4[12]        : "";
+    var getParams4  = matches4.length > 100   ? matches4[14]        : "";
 
-    var protocol5   = matches5.length > protocolGroup  ? matches5[protocolGroup]  : "";
-    var server5     = matches5.length > serverGroup    ? matches5[serverGroup]    : "";
-    var port5       = matches5.length > portGroup      ? matches5[portGroup]      : "";
-    var directory5  = matches5.length > directoryGroup ? matches5[directoryGroup] : "";
-    var file5       = matches5.length > fileGroup      ? matches5[fileGroup]      : "";
-    var getParams5  = matches5.length > getParamsGroup ? matches5[getParamsGroup] : "";
+    var protocol5   = matches5.length > 1     ? matches5[1]         : "";
+    var server5     = matches5.length > 1     ? matches5[3]         : "";
+    var port5       = matches5.length > 1     ? matches5[6]         : "";
+    var directory5  = matches5.length > 1     ? matches5[10]        : "";
+    var file5       = matches5.length > 1     ? matches5[12]        : "";
+    var getParams5  = matches5.length > 100   ? matches5[14]        : "";
 
     // http://www.google.com/
     expect( protocol1  ).toEqual('http');
