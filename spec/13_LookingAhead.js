@@ -91,7 +91,7 @@ describe("Looking Ahead", function() {
     //   * Must be between 6 and 16 characters long
     //   * Any non-whitespace character is allowed
 
-    var fixThisPattern = /^(?=\w{6,16}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d).*/;
+    var fixThisPattern = /^(?=[\w\S]{6,16}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d).*/;
 
     expect( 'abcXYZ123'        ).toMatch(fixThisPattern);
     expect( '89ghV.'           ).toMatch(fixThisPattern);
