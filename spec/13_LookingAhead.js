@@ -112,10 +112,10 @@ describe("Looking Ahead", function() {
   it('find the id of every IMG tag without an "alt" attribute', function() {
     // Assume every IMG tag has an id defined
 
-    var fixThisPattern = /___/;
-    var idGroupIdx = ___;
+    var fixThisPattern = /(id="([^"]*?)")(?!.*?alt)/;
+    var idGroupIdx = 2;
 
-    var matcher1 = fixThisPattern.exec( '<img src="pic.jpg" id="my_pic"/>'                        );
+    var matches1 = fixThisPattern.exec( '<img src="pic.jpg" id="my_pic"/>'                        );
     var matches2 = fixThisPattern.exec( '<img src="http://localhost/somepic.gif" id="localPic"/>' );
     var matches3 = fixThisPattern.exec( '<img src="mypic.png" id="hasTitle" alt="My Pic!"/>'      );
 
@@ -131,8 +131,8 @@ describe("Looking Ahead", function() {
     //   * If & is already part of an &...; escape sequence, don't escape it
     //   * & escape sequences are always &, followed by some number of letters, then ;
 
-    var fixThisPattern = /___/;
-    var escaped = '___';
+    var fixThisPattern = /&(?=[\s&])/g;
+    var escaped = '&amp;';
 
     var str1 = 'Strunk & White'.replace(fixThisPattern, escaped);
     var str2 = 'This &amp; is already escaped.'.replace(fixThisPattern, escaped);
@@ -154,8 +154,8 @@ describe("Looking Ahead", function() {
 
     // Hint: You will need to use $n references to capture groups to solve this
 
-    var fixThisPattern = /___/;
-    var replacementString = '___';
+    var fixThisPattern = /<img (src="([^"]*)")(?!.*?(alt="[^"]*)"\/>)(.*)/;
+    var replacementString = '<img alt="$2" $1$4';
 
     var str1 = '<img src="pic.jpg"/>'.replace(fixThisPattern, replacementString);
     var str2 = '<img src="trickyPic.jpg"/> src="Not it!" alt="Tricky!"'.replace(fixThisPattern, replacementString);
